@@ -1,14 +1,39 @@
 export default function Architecture() {
   return (
-    <main style={{ padding: 48, maxWidth: 960, margin: "0 auto", fontFamily: "system-ui" }}>
+    <main
+      style={{
+        padding: 48,
+        maxWidth: 960,
+        margin: "0 auto",
+        fontFamily: "system-ui",
+        lineHeight: 1.6,
+      }}
+    >
       <h1>Architecture</h1>
-      <p><strong>ABDI Core Platform — High-level system design</strong></p>
+      <p>
+        <strong>ABDI Core Platform — High-level system design</strong>
+      </p>
 
       <section>
         <h2>Overview</h2>
         <p>
-          ABDI Core Platform is designed as a hardened API core that sits between
-          clients and upstream vendors (AI, data, external services).
+          ABDI Core Platform is designed as a hardened API core
+          positioned between client applications and upstream vendors.
+        </p>
+        <p>
+          Its responsibility is not business logic —
+          but control, governance, and survivability.
+        </p>
+      </section>
+
+      <section>
+        <h2>Positioning</h2>
+        <p>
+          ABDI is not a feature platform.
+        </p>
+        <p>
+          It acts as a control plane for APIs —
+          stable by design, even as vendors and frameworks change.
         </p>
       </section>
 
@@ -22,7 +47,7 @@ Client / Application
 +---------------------+
 |  API Gateway Layer  |
 |---------------------|
-| Request ID          |
+| Request Identity    |
 | API Key Guard       |
 | Cost / Quota Guard  |
 | Kill Switch         |
@@ -31,7 +56,7 @@ Client / Application
         v
 +---------------------+
 |   Vendor Adapter    |
-| (OpenAI, etc)       |
+| (AI, Data, etc)     |
 +---------------------+
         |
         v
@@ -41,20 +66,25 @@ Client / Application
       </section>
 
       <section>
-        <h2>Key Properties</h2>
-        <ul>
-          <li>Every request has a unique identity</li>
-          <li>Cost is checked <em>before</em> vendor execution</li>
-          <li>Vendors can be disabled without breaking clients</li>
-          <li>Audit logs are append-only and reviewable</li>
-        </ul>
+        <h2>Why This Shape</h2>
+        <p>
+          The core intentionally contains no business logic.
+        </p>
+        <p>
+          This allows vendor replacement, cost control before execution,
+          and gradual evolution without systemic rewrites.
+        </p>
       </section>
 
       <section>
-        <h2>Design Philosophy</h2>
+        <h2>What It Is Not</h2>
+        <ul>
+          <li>Not a framework</li>
+          <li>Not a backend-for-frontend</li>
+          <li>Not a feature marketplace</li>
+        </ul>
         <p>
-          The core is intentionally small. Business logic lives outside.
-          This allows the platform to survive technology shifts for decades.
+          ABDI exists as a long-term infrastructure boundary.
         </p>
       </section>
     </main>
