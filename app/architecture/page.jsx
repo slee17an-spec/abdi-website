@@ -1,90 +1,64 @@
-export default function Architecture() {
+export const metadata = {
+  title: "Architecture · ABDI Core",
+  description: "Public overview of ABDI Core Platform architecture",
+};
+
+export default function ArchitecturePage() {
   return (
-    <main
-      style={{
-        padding: 48,
-        maxWidth: 960,
-        margin: "0 auto",
-        fontFamily: "system-ui",
-        lineHeight: 1.6,
-      }}
-    >
+    <main style={{ maxWidth: 760, margin: "80px auto", padding: "0 24px" }}>
       <h1>Architecture</h1>
-      <p>
-        <strong>ABDI Core Platform — High-level system design</strong>
+
+      <p style={{ marginTop: 12, opacity: 0.85 }}>
+        ABDI Core Platform is designed as a long-living infrastructure layer.
+        It prioritizes stability, clarity, and separation of concerns over
+        rapid feature expansion.
       </p>
 
-      <section>
-        <h2>Overview</h2>
-        <p>
-          ABDI Core Platform is designed as a hardened API core
-          positioned between client applications and upstream vendors.
-        </p>
-        <p>
-          Its responsibility is not business logic —
-          but control, governance, and survivability.
-        </p>
-      </section>
-
-      <section>
-        <h2>Positioning</h2>
-        <p>
-          ABDI is not a feature platform.
-        </p>
-        <p>
-          It acts as a control plane for APIs —
-          stable by design, even as vendors and frameworks change.
-        </p>
-      </section>
-
-      <section>
-        <h2>Logical Flow</h2>
-        <pre style={{ background: "#f5f5f5", padding: 16 }}>
-{`
-Client / Application
-        |
-        v
-+---------------------+
-|  API Gateway Layer  |
-|---------------------|
-| Request Identity    |
-| API Key Guard       |
-| Cost / Quota Guard  |
-| Kill Switch         |
-+---------------------+
-        |
-        v
-+---------------------+
-|   Vendor Adapter    |
-| (AI, Data, etc)     |
-+---------------------+
-        |
-        v
-   External Provider
-`}
-        </pre>
-      </section>
-
-      <section>
-        <h2>Why This Shape</h2>
-        <p>
-          The core intentionally contains no business logic.
-        </p>
-        <p>
-          This allows vendor replacement, cost control before execution,
-          and gradual evolution without systemic rewrites.
-        </p>
-      </section>
-
-      <section>
-        <h2>What It Is Not</h2>
-        <ul>
-          <li>Not a framework</li>
-          <li>Not a backend-for-frontend</li>
-          <li>Not a feature marketplace</li>
+      <section style={{ marginTop: 40 }}>
+        <h2>Design Principles</h2>
+        <ul style={{ marginTop: 12, lineHeight: 1.7 }}>
+          <li>Clear separation between core infrastructure and external services</li>
+          <li>Public interfaces are minimal, read-only, and intentional</li>
+          <li>No direct coupling between the website and internal systems</li>
+          <li>Security through boundaries, not obscurity</li>
         </ul>
-        <p>
-          ABDI exists as a long-term infrastructure boundary.
+      </section>
+
+      <section style={{ marginTop: 40 }}>
+        <h2>System Overview</h2>
+        <p style={{ marginTop: 12 }}>
+          The platform consists of three primary layers:
+        </p>
+
+        <ol style={{ marginTop: 12, lineHeight: 1.7 }}>
+          <li>
+            <strong>Public Website</strong> — static, cacheable, and independent.
+          </li>
+          <li>
+            <strong>Core API</strong> — internal runtime responsible for health,
+            routing, and platform integrity.
+          </li>
+          <li>
+            <strong>External Services</strong> — optional, isolated, and replaceable.
+          </li>
+        </ol>
+      </section>
+
+      <section style={{ marginTop: 40 }}>
+        <h2>Health & Status</h2>
+        <p style={{ marginTop: 12 }}>
+          A public health endpoint is exposed to allow transparent monitoring of
+          the platform. This endpoint is read-only and does not interact with
+          databases or private services.
+        </p>
+      </section>
+
+      <section style={{ marginTop: 40 }}>
+        <h2>Longevity</h2>
+        <p style={{ marginTop: 12 }}>
+          ABDI Core is built to remain understandable and operable over decades.
+          The architecture avoids trend-driven dependencies and favors explicit,
+          documented behavior.
         </p>
       </section>
     </main>
