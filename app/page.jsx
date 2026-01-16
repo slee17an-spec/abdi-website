@@ -1,7 +1,7 @@
 export default async function Home() {
   return (
     <main style={{ padding: 48, maxWidth: 960, margin: "0 auto", fontFamily: "system-ui" }}>
-	<h1>ABDI CORE PLATFORM — TEST 001</h1>
+	<h1>ABDI Core Platform</h1>
       <p><strong>A long-living, governed API foundation.</strong></p>
 
       <section>
