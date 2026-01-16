@@ -1,6 +1,4 @@
-export default async function Status() {
-  const health = await getHealth();
-
+export default function Status() {
   return (
     <main
       style={{
@@ -14,20 +12,25 @@ export default async function Status() {
       <h1>System Status</h1>
 
       <p>
-        This page reflects real-time reachability
-        of the ABDI Core API.
+        This page provides operational references
+        for the ABDI Core Platform.
       </p>
 
       <section>
         <h2>Core API</h2>
-        {health ? (
-          <p>
-            🟢 Online · Last checked{" "}
-            {new Date(health.time).toLocaleString()}
-          </p>
-        ) : (
-          <p>🟡 Unreachable · No response from /health</p>
-        )}
+        <p>
+          Status information is available via the health endpoint:
+        </p>
+        <p>
+          <a
+            href="https://api.abdisyaif.com/health"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "inherit", opacity: 0.85, textDecoration: "underline" }}
+          >
+            https://api.abdisyaif.com/health
+          </a>
+        </p>
       </section>
 
       <section>
@@ -36,19 +39,8 @@ export default async function Status() {
       </section>
 
       <footer style={{ marginTop: 64, fontSize: 14, opacity: 0.7 }}>
-        Data source: /health endpoint
+        © {new Date().getFullYear()} ABDI Core Platform
       </footer>
     </main>
   );
-}
-
-async function getHealth() {
-  try {
-    const res = await fetch("https://api.abdisyaif.com/health", {
-      cache: "no-store",
-    });
-    return res.ok ? await res.json() : null;
-  } catch {
-    return null;
-  }
 }
