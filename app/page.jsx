@@ -1,8 +1,40 @@
-export default async function Home() {
+export default function Home() {
   return (
-    <main style={{ padding: 48, maxWidth: 960, margin: "0 auto", fontFamily: "system-ui" }}>
-	<h1>ABDI Core Platform</h1>
-      <p><strong>A long-living, governed API foundation.</strong></p>
+    <main
+      style={{
+        padding: 48,
+        maxWidth: 960,
+        margin: "0 auto",
+        fontFamily: "system-ui",
+        lineHeight: 1.6,
+      }}
+    >
+      <h1>ABDI Core Platform</h1>
+
+      <p>
+        <strong>A long-living, governed API foundation.</strong>
+      </p>
+
+      <p>
+        Designed for systems that must remain reliable, auditable,
+        and controllable for decades.
+      </p>
+
+      <p>
+        <a
+          href="/architecture/"
+          style={{ color: "inherit", opacity: 0.85, textDecoration: "underline" }}
+        >
+          View Architecture
+        </a>{" "}
+        ·{" "}
+        <a
+          href="/status/"
+          style={{ color: "inherit", opacity: 0.85, textDecoration: "underline" }}
+        >
+          Check Platform Status
+        </a>
+      </p>
 
       <section>
         <h2>What is ABDI</h2>
