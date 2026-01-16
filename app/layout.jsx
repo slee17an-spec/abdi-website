@@ -1,6 +1,6 @@
 export const metadata = {
   title: "ABDI Core Platform",
-  description: "Secure, auditable, cost-controlled AI core infrastructure"
+  description: "Secure AI Core Infrastructure"
 };
 
 export default function RootLayout({ children }) {
