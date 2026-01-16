@@ -1,4 +1,6 @@
-export default function Home() {
+export default async function Home() {
+  const health = await getHealth();
+ {
   return (
     <main style={{ padding: 48, maxWidth: 960, margin: "0 auto", fontFamily: "system-ui" }}>
       <h1>ABDI Core Platform</h1>
@@ -22,8 +24,26 @@ export default function Home() {
         </ul>
       </section>
 
-      <section>
-        <h2>Status</h2>
+	<section>
+	  <h2>Status</h2>
+	  {health ? (
+	    <p>🟢 Core online · {new Date(health.time).toLocaleString()}</p>
+		  ) : (
+	    <p>🟡 Core unreachable · Website still operational</p>
+		  )}
+	</section>
+
+		async function getHealth() {
+  try {
+    const res = await fetch("https://api.abdisyaif.com/health", {
+      cache: "no-store",
+    });
+    return res.ok ? await res.json() : null;
+  } catch {
+    return null;
+  }
+}
+
         <p>🟢 Platform online · Landing page live</p>
       </section>
 
