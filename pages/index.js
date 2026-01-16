@@ -1,6 +1,4 @@
-export const dynamic = "force-static";
-
-export default function HomePage() {
+export default function Page() {
   return (
     <main style={{ padding: 40 }}>
       <h1>ABDI Core Platform</h1>
