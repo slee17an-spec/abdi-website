@@ -1,35 +1,23 @@
-export const metadata = {
-  title: "Platform Status · ABDI Core",
-  description: "Public health status of ABDI Core Platform",
-};
+"use client";
 
-async function getHealth() {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 3000);
+import { useEffect, useState } from "react";
 
-  try {
-    const res = await fetch("https://api.abdisyaif.com/health", {
+export default function StatusPage() {
+  const [status, setStatus] = useState("checking");
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch("https://api.abdisyaif.com/health", {
       method: "GET",
-      cache: "no-store",
       signal: controller.signal,
-    });
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then(() => setStatus("ok"))
+      .catch(() => setStatus("error"));
 
-    clearTimeout(timeout);
-
-    if (!res.ok) {
-      return { ok: false };
-    }
-
-    return { ok: true, data: await res.json() };
-  } catch {
-    clearTimeout(timeout);
-    return { ok: false };
-  }
-}
-
-export default async function StatusPage() {
-  const health = await getHealth();
-  const now = new Date().toUTCString();
+    return () => controller.abort();
+  }, []);
 
   return (
     <main style={{ maxWidth: 720, margin: "80px auto", padding: "0 24px" }}>
@@ -50,24 +38,20 @@ export default async function StatusPage() {
       >
         <h2 style={{ marginBottom: 12 }}>Core API</h2>
 
-        {health.ok ? (
-          <>
-            <p style={{ color: "#065f46", fontWeight: 600 }}>
-              🟢 Operational
-            </p>
-            <p style={{ marginTop: 8, fontSize: 14, opacity: 0.75 }}>
-              Last checked: {now}
-            </p>
-          </>
-        ) : (
-          <>
-            <p style={{ color: "#991b1b", fontWeight: 600 }}>
-              🔴 Unavailable
-            </p>
-            <p style={{ marginTop: 8, fontSize: 14, opacity: 0.75 }}>
-              Unable to reach Core API
-            </p>
-          </>
+        {status === "checking" && (
+          <p style={{ opacity: 0.7 }}>Checking status…</p>
+        )}
+
+        {status === "ok" && (
+          <p style={{ color: "#065f46", fontWeight: 600 }}>
+            🟢 Operational
+          </p>
+        )}
+
+        {status === "error" && (
+          <p style={{ color: "#991b1b", fontWeight: 600 }}>
+            🔴 Unavailable
+          </p>
         )}
       </section>
 
