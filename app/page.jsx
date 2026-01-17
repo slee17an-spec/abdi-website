@@ -96,19 +96,30 @@ export default function HomePage() {
       {/* FOOTER LINKS */}
       <section style={{ marginTop: 72, fontSize: 14 }}>
 
-<a
-  href="/architecture/"
-  style={{ color: "inherit", opacity: 0.85, textDecoration: "underline" }}
->
-  Architecture
-</a>
+<section style={{ marginTop: 72, fontSize: 14 }}>
+  <a
+    href="/architecture/"
+    style={{
+      marginRight: 24,
+      color: "inherit",
+      opacity: 0.85,
+      textDecoration: "underline",
+    }}
+  >
+    Architecture
+  </a>
 
-<a
-  href="/status/"
-  style={{ color: "inherit", opacity: 0.85, textDecoration: "underline" }}
->
-  Platform Status
-</a>
+  <a
+    href="/status/"
+    style={{
+      color: "inherit",
+      opacity: 0.85,
+      textDecoration: "underline",
+    }}
+  >
+    Platform Status
+  </a>
+</section>
 
       </section>
     </main>
