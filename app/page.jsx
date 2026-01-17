@@ -93,53 +93,43 @@ export default function HomePage() {
         </p>
       </section>
 
-	<a
-	  href="/docs/operational-guarantees"
-	  style={{ color: "inherit", opacity: 0.85, textDecoration: "underline" }}
-	>
-	  Operational Guarantees
-	</a>
-
-
       {/* FOOTER LINKS */}
-<section style={{ marginTop: 72, fontSize: 14 }}>
-  <a
-    href="/architecture/"
-    style={{
-      marginRight: 24,
-      color: "inherit",
-      opacity: 0.85,
-      textDecoration: "underline",
-    }}
-  >
-    Architecture
-  </a>
+      <section style={{ marginTop: 72, fontSize: 14 }}>
+        <a
+          href="/architecture/"
+          style={{
+            marginRight: 24,
+            color: "inherit",
+            opacity: 0.85,
+            textDecoration: "underline",
+          }}
+        >
+          Architecture
+        </a>
 
-  <a
-    href="/status/"
-    style={{
-      marginRight: 24,
-      color: "inherit",
-      opacity: 0.85,
-      textDecoration: "underline",
-    }}
-  >
-    Platform Status
-  </a>
+        <a
+          href="/status/"
+          style={{
+            marginRight: 24,
+            color: "inherit",
+            opacity: 0.85,
+            textDecoration: "underline",
+          }}
+        >
+          Platform Status
+        </a>
 
-  <a
-    href="/docs/"
-    style={{
-      color: "inherit",
-      opacity: 0.85,
-      textDecoration: "underline",
-    }}
-  >
-    Documentation
-  </a>
-</section>
-
+        <a
+          href="/docs/"
+          style={{
+            color: "inherit",
+            opacity: 0.85,
+            textDecoration: "underline",
+          }}
+        >
+          Documentation
+        </a>
       </section>
     </main>
-B  );
+  );
 }
