@@ -93,9 +93,15 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* FOOTER LINKS */}
-      <section style={{ marginTop: 72, fontSize: 14 }}>
+	<a
+	  href="/docs/operational-guarantees"
+	  style={{ color: "inherit", opacity: 0.85, textDecoration: "underline" }}
+	>
+	  Operational Guarantees
+	</a>
 
+
+      {/* FOOTER LINKS */}
 <section style={{ marginTop: 72, fontSize: 14 }}>
   <a
     href="/architecture/"
@@ -112,6 +118,7 @@ export default function HomePage() {
   <a
     href="/status/"
     style={{
+      marginRight: 24,
       color: "inherit",
       opacity: 0.85,
       textDecoration: "underline",
@@ -119,9 +126,20 @@ export default function HomePage() {
   >
     Platform Status
   </a>
+
+  <a
+    href="/docs/"
+    style={{
+      color: "inherit",
+      opacity: 0.85,
+      textDecoration: "underline",
+    }}
+  >
+    Documentation
+  </a>
 </section>
 
       </section>
     </main>
-  );
+B  );
 }
