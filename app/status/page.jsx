@@ -1,3 +1,19 @@
+/**
+ * =====================================================
+ * STATUS PAGE — INTENTIONALLY STATIC (LOCKED)
+ *
+ * This file is NOT a monitoring tool.
+ * - No fetch
+ * - No health checks
+ * - No environment probing
+ *
+ * This page is designed to remain unchanged
+ * for decades (50+ years).
+ *
+ * DO NOT MODIFY unless constitutional decision is made.
+ * =====================================================
+ */
+
 "use client";
 
 export const dynamic = "force-static";
