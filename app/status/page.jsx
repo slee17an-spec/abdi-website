@@ -10,39 +10,20 @@
  * This page is designed to remain unchanged
  * for decades (50+ years).
  *
- * DO NOT MODIFY unless constitutional decision is made.
+ * DO NOT MODIFY unless a constitutional
+ * architecture decision is made.
  * =====================================================
  */
 
-"use client";
-
 export const dynamic = "force-static";
 
-import { useEffect, useState } from "react";
-
 export default function StatusPage() {
-  const [status, setStatus] = useState("checking");
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    fetch("https://api.abdisyaif.com/health", {
-      method: "GET",
-      signal: controller.signal,
-    })
-      .then((res) => (res.ok ? res.json() : Promise.reject()))
-      .then(() => setStatus("ok"))
-      .catch(() => setStatus("error"));
-
-    return () => controller.abort();
-  }, []);
-
   return (
     <main style={{ maxWidth: 720, margin: "80px auto", padding: "0 24px" }}>
       <h1>Platform Status</h1>
 
       <p style={{ marginTop: 8, opacity: 0.8 }}>
-        Public, read-only health signal for ABDI Core Platform.
+        Public, read-only status declaration for ABDI Core Platform.
       </p>
 
       <section
@@ -54,27 +35,21 @@ export default function StatusPage() {
           background: "#fafafa",
         }}
       >
-        <h2 style={{ marginBottom: 12 }}>Core API</h2>
+        <h2 style={{ marginBottom: 12 }}>Platform Design State</h2>
 
-        {status === "checking" && (
-          <p style={{ opacity: 0.7 }}>Checking status…</p>
-        )}
+        <p style={{ color: "#065f46", fontWeight: 600 }}>
+          🟢 Operational by Design
+        </p>
 
-        {status === "ok" && (
-          <p style={{ color: "#065f46", fontWeight: 600 }}>
-            🟢 Operational
-          </p>
-        )}
-
-        {status === "error" && (
-          <p style={{ color: "#991b1b", fontWeight: 600 }}>
-            🔴 Unavailable
-          </p>
-        )}
+        <p style={{ marginTop: 12, fontSize: 14, opacity: 0.75 }}>
+          Core services are designed to operate behind dynamic guards and
+          gateways. Runtime availability may vary independently of this page.
+        </p>
       </section>
 
       <footer style={{ marginTop: 48, fontSize: 13, opacity: 0.7 }}>
-        This page does not access databases, private APIs, or credentials.
+        This page is intentionally static and does not perform
+        live health checks, API calls, or system probing.
       </footer>
     </main>
   );
